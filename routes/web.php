@@ -14,10 +14,9 @@ use App\Http\Controllers\HomePage;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home',[HomePage::class,'homeView']);
+Route::get('/',[HomePage::class,'homeView']);
+Route::get('/redirects',[HomePage::class,'redirects']);
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
