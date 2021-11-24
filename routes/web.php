@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomePage;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,12 @@ use App\Http\Controllers\HomePage;
 
 Route::get('/',[HomePage::class,'homeView']);
 Route::get('/redirects',[HomePage::class,'redirects']);
+Route::get('/users',[AdminController::class,'usersList']);
+Route::get('/deleteUser/{id}',[AdminController::class,'userDelete']);
+Route::get('/foodmenu',[AdminController::class,'foodmenu']);
+Route::post('/foodmenudata',[AdminController::class,'foodmenudata']);
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
