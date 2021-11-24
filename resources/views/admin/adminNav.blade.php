@@ -15,14 +15,38 @@
               <span class="menu-title">Users</span>
             </a>
           </li>
+
           <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+              <span class="menu-title">Food Menu</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{url('/foodmenulist')}}">Foods List</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{url('/foodmenu')}}">Add Foods</a></li>
+              </ul>
+            </div>
+          </li>
+
+
+
+
+          <!-- <li class="nav-item menu-items">
             <a class="nav-link" href="{{url('/foodmenu')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
               </span>
               <span class="menu-title">Food Menu</span>
             </a>
-          </li>
+          </li> -->
+
+
+
+
           <li class="nav-item menu-items">
             <a class="nav-link" href="pages/forms/basic_elements.html">
               <span class="menu-icon">

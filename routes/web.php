@@ -20,6 +20,8 @@ Route::get('/redirects',[HomePage::class,'redirects']);
 Route::get('/users',[AdminController::class,'usersList']);
 Route::get('/deleteUser/{id}',[AdminController::class,'userDelete']);
 Route::get('/foodmenu',[AdminController::class,'foodmenu']);
+Route::get('/foodmenulist',[AdminController::class,'foodmenulist']);
+Route::get('/deleteFood/{id}',[AdminController::class,'foodDelete']);
 Route::post('/foodmenudata',[AdminController::class,'foodmenudata']);
 
 

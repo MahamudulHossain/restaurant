@@ -23,6 +23,17 @@ class AdminController extends Controller
     	return view('admin.foodMenu');
     }
 
+    public function foodmenulist(){
+    	$data = Food::all();
+    	return view('admin.foodMenuList',['data'=>$data]);
+    }
+    
+    public function foodDelete($id){
+    	$data = Food::find($id);
+    	$data -> delete();
+    	return redirect('/foodmenulist');
+    }
+
     public function foodmenudata(Request $req){
     	$data = new Food();
 
@@ -35,7 +46,7 @@ class AdminController extends Controller
     	$data->price = $req->price;
     	$data->description = $req->description;
     	$data->save();
-    	return redirect('/foodmenu');
+    	return redirect('/foodmenulist');
 
     }
     
