@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Food;
 use App\Models\Reservation;
+use App\Models\Chefs;
 
 class AdminController extends Controller
 {
@@ -95,6 +96,54 @@ class AdminController extends Controller
     	return view('admin.reservationList',['data'=>$data]);
     }
     
+    public function chefslist(){
+    	$data = Chefs::all();
+    	return view('admin.chefslist',compact('data'));
+    }
+
+    public function addchefsForm(){
+    	return view('admin.addchefsForm');
+    }
     
+    public function addChefsData(Request $req){
+    	$data = new Chefs();
+
+    	$image = $req->image;
+    	$imageName = time(). '.' .$image->getClientOriginalExtension();
+    	$req->image->move('chefsImage',$imageName);
+
+    	$data->image = $imageName;
+    	$data->name = $req->name;
+    	$data->speciality = $req->speciality;
+    	$data->save();
+    	return redirect('chefslist');
+
+    }
     
+    public function chefDelete($id){
+    	$data = Chefs::find($id);
+    	$data -> delete();
+    	return redirect()->back();
+    }
+
+    public function updateChef($id){
+    	$data = Chefs::find($id);
+    	return view('admin.updateChef',['data'=>$data]);
+    }
+    
+    public function updateChefsdata(Request $req,$id){
+    	$data = Chefs::find($id);
+
+    	if($req->image){
+    		$image = $req->image;
+	    	$imageName = time(). '.' .$image->getClientOriginalExtension();
+	    	$req->image->move('chefsImage',$imageName);
+	    	$data->image = $imageName;
+    	}
+    	$data->name = $req->name;
+    	$data->speciality = $req->speciality;
+    	$data->save();
+    	return redirect('/chefslist');
+
+    }
 }

@@ -18,6 +18,12 @@ Route::post('/foodmenudata',[AdminController::class,'foodmenudata']);
 Route::post('/updatefoodmenudata/{id}',[AdminController::class,'updatefoodmenudata']);
 Route::post('/reservationForm',[AdminController::class,'reservationForm']);
 Route::get('/reservationData',[AdminController::class,'reservationData']);
+Route::get('/chefslist',[AdminController::class,'chefslist']);
+Route::get('/addchefs',[AdminController::class,'addchefsForm']);
+Route::post('/addChefsData',[AdminController::class,'addChefsData']);
+Route::get('/deleteChef/{id}',[AdminController::class,'chefDelete']);
+Route::get('/updateChef/{id}',[AdminController::class,'updateChef']);
+Route::post('/updateChefsdata/{id}',[AdminController::class,'updateChefsdata']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
