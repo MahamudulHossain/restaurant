@@ -20,7 +20,7 @@
                             <th> Title </th>
                             <th> Price </th>
                             <th> Description </th>
-                            <th> Action </th>
+                            <th colspan="2"> <center>Action</center> </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -35,8 +35,11 @@
                             <td> {{$data -> price}}/- </td>
                             <td> {{$data -> description}} </td>
                             <td>
-                              <a href=/deleteFood/{{$data -> id}}><button class="btn btn-danger">DELETE</button></a>   
+                              <a href=/updateFood/{{$data -> id}}><button class="btn btn-success">UPDATE</button></a>   
                          	  </td>
+                            <td>
+                              <a href=/deleteFood/{{$data -> id}}><button class="btn btn-danger">DELETE</button></a>   
+                            </td>
                           </tr>
                         @endforeach  
                         </tbody>
