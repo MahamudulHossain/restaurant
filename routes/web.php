@@ -25,6 +25,12 @@ Route::get('/deleteChef/{id}',[AdminController::class,'chefDelete']);
 Route::get('/updateChef/{id}',[AdminController::class,'updateChef']);
 Route::post('/updateChefsdata/{id}',[AdminController::class,'updateChefsdata']);
 
+Route::post('/addtocart/{id}',[HomePage::class,'addtocart']);
+Route::get('/showCart',[HomePage::class,'showCartData']);
+Route::get('/delCartItem/{Rid}',[HomePage::class,'delCartItem']);
+
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
