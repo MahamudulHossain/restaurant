@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Food;
 use App\Models\Chefs;
 use App\Models\Cart;
+use App\Models\ConfirmOrder;
+use App\Models\ConfirmOrderInfo;
 
 class HomePage extends Controller
 {
@@ -67,5 +69,33 @@ class HomePage extends Controller
             $cart =Cart::find($Rid);
             $cart->delete();
             return redirect()->back();
+    }
+    
+    public function confirmOrder(Request $req){
+
+        if(Auth::id()){
+            $user_id = Auth::id();
+            $cartData =Cart::where('user_id',$user_id)->get();
+            //return $cartData[1]->food_id;
+            foreach ($cartData as $value) {
+                $confirmOrder = new ConfirmOrder();
+                $confirmOrder->userID = $value['user_id'];
+                $confirmOrder->foodID = $value['food_id'];
+                $confirmOrder->quantity = $value['quantity']; 
+                $confirmOrder->save();          
+            }
+            $confirmOrderInfo = new ConfirmOrderInfo();
+
+            $confirmOrderInfo->user_id = $user_id;
+            $confirmOrderInfo->name = $req->name;
+            $confirmOrderInfo->email = $req->email;
+            $confirmOrderInfo->address = $req->address;
+            $confirmOrderInfo->phone = $req->phone;
+            $confirmOrderInfo->save();
+            Cart::where('user_id',$user_id)->delete();
+
+            return redirect('/');
+            
+        }
     }
 }

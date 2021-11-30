@@ -110,7 +110,7 @@
     <div id="top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-9 col-md-9 col-xs-12">
                     <div class="left-text-content">
                         <table class="table">
                           <thead>
@@ -147,7 +147,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
                     <div class="right-content">
                         <table class="table table-success">
                             <tr>
@@ -165,6 +165,36 @@
                         </table>
                     </div>
                 </div>    
+            </div>
+            <div style="margin-left: 650px;">
+                <a href="{{url('/')}}"><button class="btn btn-primary">Shop More</button></a>
+                <button class="btn btn-success" id="placeOrder">Place Order</button>
+            </div>
+            
+            <div id="FrmDiv" class="col-lg-6 col-md-6 col-xs-12" style="display: none;">
+                <div style="color:green;font-weight: bold; margin-bottom: 10px;">
+                    <h3>Fill This Form For Order Confirmation</h3>
+                </div>
+                <form action="{{url('confirmOrder')}}" method="post">
+                    @csrf
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="address" name="address">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Mobile No.</label>
+                    <input type="number" class="form-control" id="number" name="phone">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
         </div>
     </div>
@@ -208,6 +238,11 @@
             });
         });
 
+    </script>
+    <script type="text/javascript">
+        $('#placeOrder').on('click',function(e){
+            $('#FrmDiv').show();
+        });
     </script>
   </body>
 </html>

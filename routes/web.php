@@ -28,7 +28,7 @@ Route::post('/updateChefsdata/{id}',[AdminController::class,'updateChefsdata']);
 Route::post('/addtocart/{id}',[HomePage::class,'addtocart']);
 Route::get('/showCart',[HomePage::class,'showCartData']);
 Route::get('/delCartItem/{Rid}',[HomePage::class,'delCartItem']);
-
+Route::post('/confirmOrder',[HomePage::class,'confirmOrder']);
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
