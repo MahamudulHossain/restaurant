@@ -57,10 +57,10 @@ class HomePage extends Controller
         $userID = Auth::id();
         $cart = Cart::where('user_id',$userID)->count();
        
-            $itemData = Cart::where('user_id',$userID)
-                       ->join('food','carts.food_id','=','food.id') 
-                       ->select('carts.id as Rid','carts.food_id','carts.quantity','food.*')
-                       ->get();
+        $itemData = Cart::where('user_id',$userID)
+                   ->join('food','carts.food_id','=','food.id') 
+                   ->select('carts.id as Rid','carts.food_id','carts.quantity','food.*')
+                   ->get();
             return view('showCartData',['cart'=>$cart,'itemData'=>$itemData]);
     }
     

@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Food;
 use App\Models\Reservation;
 use App\Models\Chefs;
+use App\Models\ConfirmOrderInfo;
+use App\Models\ConfirmOrder;
 
 class AdminController extends Controller
 {
@@ -145,5 +147,14 @@ class AdminController extends Controller
     	$data->save();
     	return redirect('/chefslist');
 
+    }
+
+    public function confirmOrderDetails(){
+        $details = ConfirmOrderInfo::all();
+        
+        $itemData = ConfirmOrderInfo::where('user_id',$id)
+                   ->join('confirm_orders','confirm_order_infos.user_id','=','confirm_orders.userID') 
+                   ->get(); 
+        return view('admin.OrderDetails',compact('details','itemData'));
     }
 }

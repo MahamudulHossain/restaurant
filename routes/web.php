@@ -31,6 +31,8 @@ Route::get('/delCartItem/{Rid}',[HomePage::class,'delCartItem']);
 Route::post('/confirmOrder',[HomePage::class,'confirmOrder']);
 
 
+Route::get('/confirmedOrderDetails',[AdminController::class,'confirmOrderDetails']);
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

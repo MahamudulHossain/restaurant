@@ -57,5 +57,14 @@
               <span class="menu-title">Reservations</span>
             </a>
           </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('/confirmedOrderDetails')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>
+              <span class="menu-title">Order Details</span>
+            </a>
+          </li>
         </ul>
       </nav>
